@@ -1,0 +1,25 @@
+# CSpell Custom Dictionary Words
+Anzahl
+autoflake
+autoupdate
+dataframe
+depencancy
+Geschlossen
+getconn
+isort
+maxconn
+Menke
+minconn
+noqa
+Offen
+psycopg
+putconn
+pytest
+pyupgrade
+selectbox
+sqlio
+Streamlit
+Torben
+usermeta
+venv
+yearmonth
