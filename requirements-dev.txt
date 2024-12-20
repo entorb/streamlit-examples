@@ -1,0 +1,5 @@
+pre-commit
+# psycopg2
+pytest
+ruff
+watchdog
