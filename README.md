@@ -16,7 +16,7 @@ Some code examples using Python [Streamlit](https://streamlit.io).
 
 ### Install
 
-see [install.sh](install.sh)
+see [install.sh](scripts/install.sh)
 
 ### Run
 
@@ -31,3 +31,4 @@ pre-commit run --all-files
 ### Config
 
 see [.streamlit/config.toml](.streamlit/config.toml)
+can be converted to `config-prod.toml` via [scripts/config_convert.py](scripts/config_convert.py)
