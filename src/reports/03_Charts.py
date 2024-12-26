@@ -1,49 +1,43 @@
-"""Chart Examples."""
+"""Charts."""
 
 # ruff: noqa: NPY002
-
-from pathlib import Path
 
 import altair as alt
 import numpy as np
 import pandas as pd
 import streamlit as st
-from streamlit.logger import get_logger
 
-logger = get_logger(Path(__file__).stem)  # filename as logger name
-logger.info("Start")
+from helper import get_logger_from_filename
 
-st.set_page_config(page_title="AppTitle", page_icon=None, layout="wide")
+logger = get_logger_from_filename(__file__)
 
-st.header("Simple x-y Line Chart")
+st.title(__doc__[:-1])  # type: ignore
 
-# dataframe x: range 0 to 100, y: random, set x as index
-# df = pd.DataFrame({"x": range(100), "y": np.random.rand(100)})
+st.header("x-y Line Charts")
+
 df = pd.DataFrame({"x": range(100)})
 # y = sin(x) + noise
-df["y"] = np.sin(df["x"] / 25 * np.pi) + np.random.rand(len(df)) * 0.1
-# st.write(df)
+noise = np.random.rand(len(df)) * 0.1
+df["y"] = np.sin(df["x"] / 25 * np.pi) + noise
 
-# simple plot using st.line_chart
-# st.subheader("st.line_chart")
-# st.line_chart(df, x="x", y="y", x_label="", y_label="")
+st.subheader("quick and simple: st.line_chart")
+st.line_chart(df, x="x", y="y", x_label="", y_label="")
 
-# st.subheader("using alt.Chart")
-
-# c = (
-#     alt.Chart(df)
-#     .mark_line()
-#     .encode(
-#         x=alt.X("x", title=None),
-#         y=alt.Y("y", title=None),
-#     )
-# )
-# st.altair_chart(c, use_container_width=True)
-
-
-st.subheader("Lines and Points using alt.Chart, with mean and linear regression")
-base = (
+st.subheader("same via alt.Chart")
+c = (
     alt.Chart(df)
+    .mark_line()
+    .encode(
+        x=alt.X("x", title=None),
+        y=alt.Y("y", title=None),
+    )
+)
+st.altair_chart(c, use_container_width=True)
+
+
+st.subheader("Lines and Points, with mean and linear regression")
+base = (
+    alt.Chart(df, title="Chart Title")
     .mark_point(size=100)
     .encode(
         x=alt.X("x", title=None),
@@ -52,7 +46,7 @@ base = (
 )
 mean_line = (
     alt.Chart(df)
-    .mark_rule(color="gray", strokeDash=[6, 2], strokeWidth=1)
+    .mark_rule(color="gray", strokeDash=[6, 2], strokeWidth=1)  # rule not line!
     .encode(
         y="mean(y)",
     )
@@ -66,7 +60,17 @@ st.altair_chart(c, use_container_width=True)  # type: ignore
 
 st.header("Bar Charts")
 
+st.subheader("quick and simple: st.bar_chart for above data")
+st.bar_chart(df, x="x", y="y", x_label="", y_label="")
+
+st.subheader("st.bar_chart with multiple columns")
+df = pd.DataFrame(np.random.rand(20, 3), columns=["a", "b", "c"])
+st.bar_chart(df, stack=True, horizontal=False)
+
+st.subheader("more advanced and flexible: alt.Chart for time series")
+
 # generate date series and convert to strings of "yyyy-mm"
+# date strings are nice for multi language apps
 df = pd.DataFrame(
     {
         "month": pd.date_range(start="2023-01", end="2024-12", freq="MS").strftime(
@@ -74,13 +78,14 @@ df = pd.DataFrame(
         )
     }
 )
-# add column group to each month
+# add column group with 2 values per month
 df = pd.concat(
     [
         df.assign(group="group1"),
         df.assign(group="group2"),
     ]
-)
+).sort_values("month")
+# add random value column
 df["value"] = np.random.rand(df.shape[0])
 # st.write(df)
 
@@ -89,6 +94,7 @@ color_scale = alt.Scale(
     domain=["group1", "group2"],
     range=["#FF0000", "blue"],
 )
+
 c = (
     alt.Chart(df)
     .mark_bar()
@@ -105,9 +111,10 @@ c = (
     )
 )
 st.altair_chart(c, use_container_width=True)
+
+
 # :T stands for Temporal. It indicates that the field contains date or time values.
 # :N stands for Nominal. It indicates that the field contains categorical data,
 #   which represents discrete categories or labels.
 # :Q stands for Quantitative. It indicates that the field contains numerical data
 #   that can be measured and compared.
-logger.info("End")
