@@ -5,20 +5,24 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import streamlit as st
-from streamlit.logger import get_logger
 
-logger = get_logger(Path(__file__).stem)  # filename as logger name
-logger.info("Start")
+from helper import get_logger_from_filename
 
+logger = get_logger_from_filename(__file__)
 
-st.set_page_config(page_title="AppTitle", page_icon=None, layout="wide")
+st.title(__doc__[:-1])  # type: ignore
 
-data = (("No1", 12, 13), ("No2", 14, 15))
-df = pd.DataFrame(data, columns=["Name", "Lat", "Lng"])
+# generate list of A-J
+names = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+lats = [40 + 1.234 / i for i in range(1, 11)]
+lons = [11 + 1.234 / i for i in range(1, 11)]
+df = pd.DataFrame(data={"Name": names, "Lat": lats, "Lng": lons})
 
 df_edited = st.data_editor(df, hide_index=True, num_rows="dynamic")
 if st.button("Save"):
+    # change column order
     df2 = df_edited[["Lat", "Lng", "Name"]]
+    # clean up
     df2[["Lat", "Lng"]] = df2[["Lat", "Lng"]].replace(0, np.nan)
     df2["Name"] = df2["Name"].str.strip().replace("", np.nan)
     df2 = df2.dropna()
@@ -29,5 +33,3 @@ if st.button("Save"):
     p = Path("filename.txt")
     df2.to_csv(p, sep="\t", index=False, header=True, lineterminator="\n")
     st.rerun()
-
-logger.info("End")
