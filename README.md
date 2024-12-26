@@ -4,13 +4,17 @@ Some code examples using Python [Streamlit](https://streamlit.io).
 
 ## Contents
 
-* [app.py](src/app.py): Simple Minimal App
-* [app_azure_login_msal.py](src/app_azure_login_msal.py): Azure Login/Authentication using MSAL
-* [app_charts.py](src/app_charts.py): Chart examples: x-y-lines, regression, mean; bar charts
-* [app_db_con_limit.py](src/app_db_con_limit.py): Database access, using connection pool to restrict concurrent connections
-* [app_file_upload.py](src/app_file_upload.py): File upload, guess encoding
-* [app_localization.py](src/app_localization.py): Language localization
-* [app_url_param.py](src/app_url_param.py): URL parameter get and set
+* [app.py](src/app.py): Main app including multiple examples in [src/reports](src/reports/)
+  * [Selects](src/reports/02_Selects.py): selects, filter, read write url parameters
+  * [Charts](src/reports/03_Charts.py): x-y-lines, regression, mean; bar charts
+  * [Tables](src/reports/04_Tables.py): simple to fancy tables
+  * [Data_Editor](src/reports/05_Data_Editor.py): data editor with save button
+  * [File_Download](src/reports/11_File_Download.py): Download data as text or Excel file
+  * [File_Upload](src/reports/12_File_Upload.py): Upload data
+* Stand-alone example apps
+  * [app_azure_login_msal.py](src/app_azure_login_msal.py): Azure Login/Authentication using MSAL
+  * [app_db_con_limit.py](src/app_db_con_limit.py): Database access, using connection pool to restrict concurrent connections
+  * [app_localization.py](src/app_localization.py): Language localization
 
 ## Repo Setup
 
@@ -20,7 +24,7 @@ see [install.sh](scripts/install.sh)
 
 ### Run
 
-see [run.sh](run.sh)
+see [run.sh](scripts/run.sh)
 
 ### Check Code
 
