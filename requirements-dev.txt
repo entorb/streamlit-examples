@@ -1,6 +1,7 @@
 pre-commit
 # psycopg2
 pytest
+pytest-cov
 ruff
 tomli-w
 watchdog
