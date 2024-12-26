@@ -14,8 +14,9 @@ showErrorDetails = true
 [server]
 port = 8501
 maxUploadSize = 1 # MB
-# restrict access to localhost
-# address = "127.0.0.1"
+# restrict access to localhost for dev environment
+address = "127.0.0.1"
+fileWatcherType = "watchdog"
 
 [browser]
 gatherUsageStats = false
