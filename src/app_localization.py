@@ -3,6 +3,7 @@
 import json
 from pathlib import Path
 
+# ruff: noqa: E501
 import altair as alt
 import pandas as pd
 import streamlit as st

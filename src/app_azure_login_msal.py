@@ -139,7 +139,7 @@ def get_username_from_azure(app: ConfidentialClientApplication, code: str) -> st
     username = token_result.get("id_token_claims", {}).get("preferred_username", "")
     # user@myDomain.com
     access_token = token_result.get("access_token", "")
-    if username == "" or access_token == "":
+    if username == "" or access_token == "":  # nosec
         msg = "Auth failed"
         logger.error(msg)
         st.error(msg)
