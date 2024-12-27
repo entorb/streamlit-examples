@@ -107,7 +107,11 @@ c = (
         # color="group:N",  # simple
         color=alt.Color("group:N", scale=color_scale),
         xOffset="group:N",  # remove to get stacked bars
-        tooltip=["month:N", "group:N", "value:Q"],
+        tooltip=[
+            alt.Tooltip("month:N", title="Month"),
+            alt.Tooltip("group:N", title="Group"),
+            alt.Tooltip("value:Q", title="Value"),
+        ],
     )
 )
 st.altair_chart(c, use_container_width=True)

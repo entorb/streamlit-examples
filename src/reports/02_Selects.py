@@ -23,7 +23,7 @@ df = pd.DataFrame(data)
 col1, col2, _ = st.columns((1, 1, 4))
 
 sel_year = col1.selectbox(
-    "Year",
+    label="Year",
     options=range(df["year"].min(), df["year"].max() + 1),
     index=None,
     key="sel_year",
@@ -33,6 +33,15 @@ if sel_year:
 
 col2.button("Reset", on_click=reset_filters)
 st.write(df)
+
+
+st.header("Multi-Select")
+sel_years = st.multiselect(
+    label="Year",
+    options=range(df["year"].min(), df["year"].max() + 1),
+)
+if sel_years:
+    df = df.query("type in @sel_years")
 
 
 st.header("Select that reads and writes URL parameters")
