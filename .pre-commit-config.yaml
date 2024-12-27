@@ -14,7 +14,7 @@
 
 exclude: |
   (?x)^(
-    .*.vscode/launch.json |
+    .*.vscode/launch.json | .*src/resources/.*
   )$
 
 repos:

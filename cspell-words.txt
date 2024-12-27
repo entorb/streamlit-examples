@@ -4,9 +4,11 @@ autoflake
 autoupdate
 dataframe
 depencancy
+dropna
 Geschlossen
 getconn
 isort
+lons
 maxconn
 Menke
 minconn
@@ -20,6 +22,7 @@ pyupgrade
 selectbox
 sqlio
 Streamlit
+tomli
 Torben
 usermeta
 venv
