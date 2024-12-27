@@ -15,3 +15,4 @@ ignorePaths:
   - "dist"
   - "build"
   - "requirements.txt"
+  - "src/resources"
