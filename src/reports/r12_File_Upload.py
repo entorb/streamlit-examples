@@ -12,12 +12,6 @@ logger = get_logger_from_filename(__file__)
 
 st.title(__doc__[:-1])  # type: ignore
 
-st.header("Upload a text file (and guess encoding)")
-
-st.write("set `maxUploadSize` in config.toml")
-
-uploaded_file = st.file_uploader("Upload file", type="txt")
-
 
 def guess_encoding(raw_data: bytes) -> str:  # noqa: D103
     result = chardet.detect(raw_data)
@@ -25,6 +19,12 @@ def guess_encoding(raw_data: bytes) -> str:  # noqa: D103
         return result["encoding"]
     return "utf-8"  # as fallback
 
+
+st.header("Upload a text file (and guess encoding)")
+
+st.write("set `maxUploadSize` in config.toml")
+
+uploaded_file = st.file_uploader("Upload file", type="txt")
 
 if uploaded_file:
     raw_data = uploaded_file.getvalue()

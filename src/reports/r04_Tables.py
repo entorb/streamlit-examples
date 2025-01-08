@@ -10,6 +10,7 @@ logger = get_logger_from_filename(__file__)
 
 st.title(__doc__[:-1])  # type: ignore
 
+
 df = pd.DataFrame(
     data={
         "id": range(123456, 123466),

@@ -13,6 +13,7 @@ logger = get_logger_from_filename(__file__)
 
 st.title(__doc__[:-1])  # type: ignore
 
+
 st.header("x-y Line Charts")
 
 df = pd.DataFrame({"x": range(100)})

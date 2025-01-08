@@ -12,6 +12,7 @@ logger = get_logger_from_filename(__file__)
 
 st.title(__doc__[:-1])  # type: ignore
 
+
 # generate list of A-J
 names = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
 lats = [40 + 1.234 / i for i in range(1, 11)]
