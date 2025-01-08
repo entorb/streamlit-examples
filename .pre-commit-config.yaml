@@ -4,8 +4,6 @@
 #  pre-commit install
 # run manually
 #  pre-commit run --all-files
-# or
-#  pre-commit run --files myFile1.py myFile2.py
 # update hooks to latest version
 #  pre-commit autoupdate
 
@@ -67,7 +65,7 @@ repos:
 
   # ruff
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: "v0.8.3"
+    rev: "v0.9.5"
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
@@ -75,20 +73,20 @@ repos:
 
   # security
   - repo: https://github.com/PyCQA/bandit
-    rev: 1.8.0
+    rev: 1.8.2
     hooks:
       - id: bandit
         args: ["--skip", "B101,B404"]
 
   - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.21.2
+    rev: v8.23.3
     hooks:
       - id: gitleaks
 
-  - repo: https://github.com/trufflesecurity/truffleHog
-    rev: v3.87.1
-    hooks:
-      - id: trufflehog
+  # - repo: https://github.com/trufflesecurity/truffleHog
+  #   rev: v3.88.5
+  #   hooks:
+  #     - id: trufflehog
 
   # minor formatting
   - repo: https://github.com/pre-commit/pygrep-hooks
@@ -114,14 +112,14 @@ repos:
 
   # markdown
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.43.0
+    rev: v0.44.0
     hooks:
       - id: markdownlint
         args: ["--disable", "MD013"]
 
   # code spell check via cspell
   - repo: https://github.com/streetsidesoftware/cspell-cli
-    rev: v8.17.0
+    rev: v8.17.2
     hooks:
       - id: cspell
 
@@ -141,4 +139,4 @@ repos:
   #     # - id: perlimports
 
 default_language_version:
-  python: python3.12
+  python: python3.11
