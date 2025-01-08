@@ -19,6 +19,7 @@ psycopg
 putconn
 pytest
 pyupgrade
+scriptrunner
 selectbox
 sqlio
 Streamlit
