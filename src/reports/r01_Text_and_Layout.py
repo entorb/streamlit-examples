@@ -1,4 +1,4 @@
-"""Sections_and_Text."""
+"""Sections and Text."""
 
 import streamlit as st
 
@@ -7,6 +7,7 @@ from helper import get_logger_from_filename
 logger = get_logger_from_filename(__file__)
 
 st.title(__doc__[:-1])  # type: ignore
+
 
 st.header("Columns")
 st.subheader("3 same size columns")
