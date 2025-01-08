@@ -10,12 +10,11 @@ logger = get_logger_from_filename(__file__)
 st.title(__doc__[:-1])  # type: ignore
 
 
-st.header("Select with reset button")
-
-
 def reset_filters() -> None:  # noqa: D103
     st.session_state.sel_year = None
 
+
+st.header("Select with reset button")
 
 data = {"year": [2020, 2021, 2022, 2020, 2021, 2022], "value": [1, 2, 3, 3, 2, 1]}
 df = pd.DataFrame(data)

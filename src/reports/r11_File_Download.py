@@ -12,6 +12,9 @@ from helper import get_logger_from_filename
 
 logger = get_logger_from_filename(__file__)
 
+st.title(__doc__[:-1])  # type: ignore
+
+
 st.header("Download a text file")
 st.write("Prepare step makes sense if calculations are needed.")
 col1, col2, _ = st.columns((1, 1, 6))
