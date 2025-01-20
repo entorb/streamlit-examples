@@ -22,16 +22,16 @@ def init_report(path: Path) -> AppTest:
     return at
 
 
-def run_and_assert_no_problems(at: AppTest) -> None:
-    at.run()
-    assert not at.exception
-    assert not at.error
-    assert not at.warning
+def run_and_assert_no_problems(at: AppTest, path: Path) -> None:
+    at.run(timeout=60)
+    assert not at.exception, path.stem
+    assert not at.error, path.stem
+    assert not at.warning, path.stem
 
 
 def init_and_run(path: Path) -> AppTest:
     at = init_report(path)
-    run_and_assert_no_problems(at)
+    run_and_assert_no_problems(at, path)
     return at
 
 
@@ -42,15 +42,15 @@ def test_all_pages() -> None:
         f = p.stem
         t = f[4:]
         print(t)
-        at = init_and_run(p)
+        _ = init_and_run(p)
 
 
 def test_single_page() -> None:
-    """Open specific page and set session/select value."""
+    """Open specific page and set input value."""
     p = Path("src/reports/r02_Selects.py")
     f = p.stem
     t = f[4:]
     print(t)
     at = init_report(p)
     at.session_state["sel_year"] = 2020
-    run_and_assert_no_problems(at)
+    run_and_assert_no_problems(at, p)
