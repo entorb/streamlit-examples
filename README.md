@@ -20,6 +20,8 @@ Some code examples using Python [Streamlit](https://streamlit.io).
 
 ### Install
 
+Using Python 3.11 here, since my webserver does not yet provide 3.12 or newer.
+
 see [install.sh](scripts/install.sh)
 
 ### Run
@@ -40,9 +42,15 @@ are executed via a [GitHub Action](.github/workflows/check.yml)
 see [.streamlit/config.toml](.streamlit/config.toml)
 can be converted to `config-prod.toml` via [scripts/config_convert.py](scripts/config_convert.py)
 
-## Other Python Examples/Snippets
+## Links
+
+### My Streamlit Projects
+
+* <https://github.com/entorb/strava-streamlit>
+* <https://github.com/entorb/de-dorf>
+
+### Other Python Examples/Snippets
 
 * <https://github.com/entorb/template-python>
 * <https://entorb.net/wickie/Python>
 * <https://entorb.net/wickie/Pandas>
-* <https://github.com/entorb/strava-streamlit>
