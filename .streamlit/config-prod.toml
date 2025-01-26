@@ -20,5 +20,6 @@ gatherUsageStats = false
 [mapbox]
 
 [theme]
+base = "dark"
 
 [secrets]
