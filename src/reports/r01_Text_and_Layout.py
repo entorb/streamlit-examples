@@ -20,3 +20,13 @@ col3.subheader("Col3")
 st.subheader("1/3 and 3/4 columns with only the first used")
 col1, _ = st.columns([1, 3])  # 1/3 and 3/4 columns
 col1.subheader("Col1")
+
+
+# st.header("Dark Layout Toggle")
+# toggle_dark = st.toggle("Dark Layout", value=True)
+# if st.get_option("theme.base") == "light" and toggle_dark:
+#     st._config.set_option("theme.base", "dark")  # type: ignore
+#     st.rerun()
+# elif st.get_option("theme.base") == "dark" and not toggle_dark:
+#     st._config.set_option("theme.base", "light")  # type: ignore
+#     st.rerun()
