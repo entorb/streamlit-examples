@@ -47,7 +47,7 @@ def test_all_pages() -> None:
 
 def test_single_page() -> None:
     """Open specific page and set input value."""
-    p = Path("src/reports/r02_Selects.py")
+    p = Path("src/reports/r02_Inputs.py")
     f = p.stem
     t = f[4:]
     print(t)

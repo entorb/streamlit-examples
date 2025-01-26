@@ -14,6 +14,12 @@ def reset_filters() -> None:  # noqa: D103
     st.session_state.sel_year = None
 
 
+st.header("Simple Inputs")
+st.subheader("Slider")
+POP = st.session_state.get("sel_pop", 2000)
+sel_pop = st.slider("Select Population", 100, 5000, 2000, 25, key="sel_pop")
+
+
 st.header("Select with reset button")
 
 data = {"year": [2020, 2021, 2022, 2020, 2021, 2022], "value": [1, 2, 3, 3, 2, 1]}
