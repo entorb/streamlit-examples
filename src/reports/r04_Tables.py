@@ -1,4 +1,4 @@
-"""Tables."""
+"""Tables."""  # noqa: N999
 
 import numpy as np
 import pandas as pd
