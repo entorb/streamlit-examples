@@ -1,4 +1,4 @@
-"""Data Editor with Save Button."""
+"""Data Editor with Save Button."""  # noqa: N999
 
 from pathlib import Path
 
