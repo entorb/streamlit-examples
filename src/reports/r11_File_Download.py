@@ -1,4 +1,4 @@
-"""File Download."""
+"""File Download."""  # noqa: N999
 
 import io
 

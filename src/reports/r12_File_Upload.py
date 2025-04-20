@@ -1,4 +1,4 @@
-"""File Upload."""
+"""File Upload."""  # noqa: N999
 
 import re
 from io import StringIO

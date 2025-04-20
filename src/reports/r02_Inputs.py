@@ -1,4 +1,4 @@
-"""Selects and Filters."""
+"""Selects and Filters."""  # noqa: N999
 
 import pandas as pd
 import streamlit as st

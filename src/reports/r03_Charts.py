@@ -1,4 +1,4 @@
-"""Charts."""
+"""Charts."""  # noqa: N999
 
 # ruff: noqa: NPY002
 
