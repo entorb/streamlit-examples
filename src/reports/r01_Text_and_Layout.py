@@ -1,4 +1,4 @@
-"""Sections and Text."""
+"""Sections and Text."""  # noqa: N999
 
 import streamlit as st
 
