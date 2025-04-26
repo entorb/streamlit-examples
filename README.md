@@ -20,7 +20,7 @@ Some code examples using Python [Streamlit](https://streamlit.io).
 
 ### Install
 
-Using Python 3.12 here
+Using Python 3.13 here
 
 see [install.sh](scripts/install.sh)
 
