@@ -13,6 +13,7 @@ maxconn
 Menke
 minconn
 MSAL
+nabla
 noqa
 Offen
 psycopg
@@ -26,5 +27,6 @@ Streamlit
 tomli
 Torben
 usermeta
+varepsilon
 venv
 yearmonth
