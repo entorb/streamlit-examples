@@ -25,9 +25,9 @@ st.header("Select with reset button")
 data = {"year": [2020, 2021, 2022, 2020, 2021, 2022], "value": [1, 2, 3, 3, 2, 1]}
 df = pd.DataFrame(data)
 
-col1, col2, _ = st.columns((1, 1, 4))
+cols = st.columns((1, 1, 4))
 
-sel_year = col1.selectbox(
+sel_year = cols[0].selectbox(
     label="Year",
     options=range(df["year"].min(), df["year"].max() + 1),
     index=None,
@@ -36,17 +36,19 @@ sel_year = col1.selectbox(
 if sel_year:
     df = df.query("year == @sel_year")
 
-col2.button("Reset", on_click=reset_filters)
-st.write(df)
+cols[1].button("Reset", on_click=reset_filters)
+cols[2].write(df)
 
 
 st.header("Multi-Select")
-sel_years = st.multiselect(
+cols = st.columns((1, 1, 4))
+sel_years = cols[0].multiselect(
     label="Year",
     options=range(df["year"].min(), df["year"].max() + 1),
 )
 if sel_years:
-    df = df.query("type in @sel_years")
+    df = df.query("year in @sel_years")
+    cols[2].write(df)
 
 
 st.header("Select that reads and writes URL parameters")
@@ -60,8 +62,8 @@ if key not in st.session_state:
 else:
     idx = lst.index(st.session_state[key]) if st.session_state[key] in lst else None
 
-col1, _ = st.columns((1, 5))
-sel = col1.selectbox(
+cols = st.columns((1, 5))
+sel = cols[0].selectbox(
     label="Select Department",
     options=lst,
     index=idx,
