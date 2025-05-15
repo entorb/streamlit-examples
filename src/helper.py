@@ -14,7 +14,7 @@ def create_navigation_menu() -> None:
         f = p.stem
         if f.startswith("_"):
             continue
-        t = f[4:]
+        t = f[4:].replace("_", " ")
         lst.append(st.Page(page=f"reports/{f}.py", title=t))
     pg = st.navigation(lst, expanded=True)
     pg.run()
