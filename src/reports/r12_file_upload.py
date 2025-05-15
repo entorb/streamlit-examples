@@ -1,4 +1,4 @@
-"""File Upload."""  # noqa: N999
+"""File Upload."""
 
 import re
 from io import StringIO
@@ -6,11 +6,11 @@ from io import StringIO
 import chardet  # pip install chardet
 import streamlit as st
 
-from helper import get_logger_from_filename
+from helper import filename_to_title, get_logger_from_filename
 
 logger = get_logger_from_filename(__file__)
 
-st.title(__doc__[:-1])  # type: ignore
+st.title(filename_to_title(__file__))
 
 
 def guess_encoding(raw_data: bytes) -> str:  # noqa: D103

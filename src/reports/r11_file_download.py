@@ -1,4 +1,4 @@
-"""File Download."""  # noqa: N999
+"""File Download."""
 
 import io
 
@@ -6,13 +6,13 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-from helper import get_logger_from_filename
+from helper import filename_to_title, get_logger_from_filename
 
 # pip install xlsxwriter
 
 logger = get_logger_from_filename(__file__)
 
-st.title(__doc__[:-1])  # type: ignore
+st.title(filename_to_title(__file__))
 
 
 st.header("Download a text file")

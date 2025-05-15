@@ -1,14 +1,14 @@
-"""Tables."""  # noqa: N999
+"""Tables."""
 
 import numpy as np
 import pandas as pd
 import streamlit as st
 
-from helper import get_logger_from_filename
+from helper import filename_to_title, get_logger_from_filename
 
 logger = get_logger_from_filename(__file__)
 
-st.title(__doc__[:-1])  # type: ignore
+st.title(filename_to_title(__file__))
 
 
 df = pd.DataFrame(
