@@ -1,18 +1,18 @@
-"""Sections and Text."""  # noqa: N999
+"""Sections and Text."""
 
 import streamlit as st
 
-from helper import get_logger_from_filename
+from helper import filename_to_title, get_logger_from_filename
 
 logger = get_logger_from_filename(__file__)
 
-st.title(__doc__[:-1])  # type: ignore
+st.title(filename_to_title(__file__))
 
 
 st.header("Columns")
 st.subheader("3 same size columns")
 
-DUMMY_TEXT = """This is a long plain dummy text. This is a long plain dummy text. This is a long plain dummy text. This is a long plain dummy text."""
+DUMMY_TEXT = """This is a long plain dummy text. This is a long plain dummy text. This is a long plain dummy text. This is a long plain dummy text."""  # noqa: E501
 
 cols = st.columns(3)
 cols[0].subheader("Col1")
