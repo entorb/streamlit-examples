@@ -17,14 +17,14 @@ st.title(__doc__[:-1])  # type: ignore
 
 st.header("Download a text file")
 st.write("Prepare step makes sense if calculations are needed.")
-col1, col2, _ = st.columns((1, 1, 6))
-if col1.button(label="File Prepare"):
+cols = st.columns((1, 1, 6))
+if cols[0].button(label="File Prepare"):
     cont = """This is the content of the text file."""
     buffer = io.BytesIO()
     buffer.write(cont.encode("utf-8"))
     buffer.seek(0)
 
-    col2.download_button(
+    cols[1].download_button(
         label="File Download",
         data=buffer,
         file_name="text.txt",
@@ -42,14 +42,14 @@ df = pd.DataFrame(
         "date": pd.date_range("2025-01-01", periods=10),
     }
 )
-col1, col2, _ = st.columns((1, 1, 6))
-if col1.button(label="Excel Prepare"):
+cols = st.columns((1, 1, 6))
+if cols[0].button(label="Excel Prepare"):
     buffer = io.BytesIO()
     with pd.ExcelWriter(buffer, engine="xlsxwriter") as writer:
         df.to_excel(writer, sheet_name="Sheet1", index=False)
         writer.close()
 
-    col2.download_button(
+    cols[1].download_button(
         label="Excel Download",
         data=buffer,
         file_name="file.xlsx",
