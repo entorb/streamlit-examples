@@ -19,7 +19,7 @@ def filename_to_title(path: Path | str) -> str:
     return name
 
 
-def create_navigation_menu() -> None:
+def create_navigation_menu() -> str:
     """Create and populate navigation menu."""
     lst = []
     for p in sorted(Path("src/reports").glob("*.py")):
@@ -30,6 +30,7 @@ def create_navigation_menu() -> None:
         lst.append(st.Page(page=f"reports/{f}.py", title=t))
     pg = st.navigation(lst, expanded=True)
     pg.run()
+    return pg.url_path
 
 
 def get_logger_from_filename(file: str) -> Logger:

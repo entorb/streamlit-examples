@@ -1,7 +1,9 @@
 __pycache__/
+.sonarlint/
 .vscode/
-.DS_Store
 
 .coverage
+.DS_Store
+mem_logger.tsv
 requirements-all.txt
 secrets.toml

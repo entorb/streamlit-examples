@@ -19,6 +19,7 @@ Offen
 psycopg
 putconn
 pytest
+pythonpath
 pyupgrade
 scriptrunner
 selectbox
