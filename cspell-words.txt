@@ -22,6 +22,8 @@ pytest
 pyupgrade
 scriptrunner
 selectbox
+SonarCloud
+SonarQube
 sqlio
 Streamlit
 tomli

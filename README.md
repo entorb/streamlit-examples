@@ -54,3 +54,7 @@ can be converted to `config-prod.toml` via [scripts/config_convert.py](scripts/c
 * <https://github.com/entorb/template-python>
 * <https://entorb.net/wickie/Python>
 * <https://entorb.net/wickie/Pandas>
+
+## SonarQube Code Analysis
+
+At [sonarcloud.io](https://sonarcloud.io/summary/overall?id=entorb_streamlit-examples&branch=main)
