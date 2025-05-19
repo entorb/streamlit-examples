@@ -23,15 +23,21 @@ if MEASURE_MEMORY:
     tracemalloc.start()
     time_start = time()
 
-
-create_navigation_menu()
-
+pagename = create_navigation_menu()
 
 # print memory usage and runtime
 if MEASURE_MEMORY:
     time_end = time()
     max_bytes = tracemalloc.get_traced_memory()[0]
-    print(f"{round(max_bytes / 10**6, 1)}MB, {round(time_end - time_start, 1)}s")
+    print(f"{round(max_bytes / 1_048_576, 1)}MB, {round(time_end - time_start, 1)}s")
+
+    snapshot = tracemalloc.take_snapshot()
+    top_stats = snapshot.statistics("lineno")
+
+    print("[ Top 10 ]")
+    for stat in top_stats[:10]:
+        print(stat)
+
     tracemalloc.stop()
 
-logger.info("End")
+logger.info(f"End: {pagename}")
