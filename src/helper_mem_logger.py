@@ -3,8 +3,11 @@
 import csv
 import time
 import tracemalloc
-from io import TextIOWrapper
 from pathlib import Path
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from io import TextIOWrapper
 
 
 class MemLogger:

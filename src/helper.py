@@ -27,8 +27,8 @@ def create_navigation_menu() -> str:
         if f.startswith("_"):
             continue
         t = filename_to_title(p)
-        lst.append(st.Page(page=f"reports/{f}.py", title=t))
-    pg = st.navigation(lst, expanded=True)
+        lst.append(st.Page(page=f"reports/{f}.py", title=t))  # type: ignore
+    pg = st.navigation(lst, expanded=True)  # type: ignore
     pg.run()
     return pg.url_path
 

@@ -4,6 +4,9 @@ Main file for files in reports dir.
 Should handle general setup and navigation.
 """
 
+import tracemalloc
+from time import time
+
 import streamlit as st
 
 from helper import create_navigation_menu, get_logger_from_filename
@@ -16,12 +19,9 @@ logger = get_logger_from_filename(__file__)
 logger.info("Start")
 
 # start measurement of memory usage and runtime
+time_start = time()
 if MEASURE_MEMORY:
-    import tracemalloc
-    from time import time
-
     tracemalloc.start()
-    time_start = time()
 
 pagename = create_navigation_menu()
 
@@ -40,4 +40,4 @@ if MEASURE_MEMORY:
 
     tracemalloc.stop()
 
-logger.info(f"End: {pagename}")
+logger.info(f"End: {pagename}")  # noqa: G004
