@@ -2,9 +2,13 @@
 
 from logging import Logger
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 import streamlit as st
 from streamlit.logger import get_logger
+
+if TYPE_CHECKING:
+    from streamlit.navigation.page import StreamlitPage
 
 
 def filename_to_title(path: Path | str) -> str:
@@ -21,7 +25,7 @@ def filename_to_title(path: Path | str) -> str:
 
 def create_navigation_menu() -> str:
     """Create and populate navigation menu."""
-    lst = []
+    lst: list[StreamlitPage] = []
     for p in sorted(Path("src/reports").glob("*.py")):
         f = p.stem
         if f.startswith("_"):
