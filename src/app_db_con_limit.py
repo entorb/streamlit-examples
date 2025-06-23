@@ -1,6 +1,6 @@
 """DB access and connection limit."""
 
-# ruff: noqa: D103 S101
+# ruff: noqa: D103
 import time
 import warnings
 
