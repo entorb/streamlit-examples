@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 
 
 class MemLogger:
-    """Trace and log memory consumption and runtime."""  # noqa: D203
+    """Trace and log memory consumption and runtime."""
 
     def __init__(self, logfile: Path) -> None:  # noqa: D107
         self.logfile: Path = logfile
