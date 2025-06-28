@@ -23,7 +23,11 @@ time_start = time()
 if MEASURE_MEMORY:
     tracemalloc.start()
 
-pagename = create_navigation_menu()
+
+def main() -> None:  # noqa: D103
+    pagename = create_navigation_menu()
+    logger.info(f"End: {pagename}")  # noqa: G004
+
 
 # print memory usage and runtime
 if MEASURE_MEMORY:
@@ -40,4 +44,12 @@ if MEASURE_MEMORY:
 
     tracemalloc.stop()
 
-logger.info(f"End: {pagename}")  # noqa: G004
+
+if __name__ == "__main__":
+    try:
+        main()
+    # custom exception handling is required for Sentry.
+    except Exception as e:
+        logger.exception("Exception:")
+        st.exception(e)
+        st.stop()
