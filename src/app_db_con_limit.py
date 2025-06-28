@@ -24,7 +24,7 @@ def _get_connection_pool() -> psycopg2.pool.SimpleConnectionPool:
     # return psycopg2.pool.SimpleConnectionPool(dsn=db_dns, minconn=1, maxconn=1)
 
     # fix for Azure DBs requiring username@hostname as username
-    from urllib.parse import urlparse
+    from urllib.parse import urlparse  # noqa: PLC0415
 
     p = urlparse(dns)
     return psycopg2.pool.SimpleConnectionPool(

@@ -165,7 +165,7 @@ def fetch_more_user_info(access_token: str) -> dict:
     """
     Optionally: Fetch user info from MS Graph API.
     """
-    import requests
+    import requests  # noqa: PLC0415
 
     response = requests.get(
         "https://graph.microsoft.com/v1.0/me",
