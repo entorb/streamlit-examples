@@ -44,7 +44,7 @@ def get_logger_from_filename(file: str) -> Logger:
 
 def include_javascript() -> None:
     """Include a custom JavaScript."""
-    import streamlit.components.v1 as components
+    import streamlit.components.v1 as components  # noqa: PLC0415
 
     components.html(
         """
