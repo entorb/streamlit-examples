@@ -31,6 +31,6 @@ if st.button("Save"):
     df2["Lat"] = df2["Lat"].clip(lower=-180, upper=180).round(4)
     df2["Lng"] = df2["Lng"].clip(lower=-90, upper=90).round(4)
     df2 = df2.sort_values("Name")
-    p = Path("filename.txt")
+    p = Path("out/filename.csv")
     df2.to_csv(p, sep="\t", index=False, header=True, lineterminator="\n")
-    st.rerun()
+    st.write(f"written to `{p}`")

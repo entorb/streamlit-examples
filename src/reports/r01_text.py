@@ -22,8 +22,8 @@ cols[1].write(DUMMY_TEXT)
 cols[2].subheader("Col3")
 cols[2].write(DUMMY_TEXT)
 
-st.subheader("1/3 and 3/4 columns with only the first used")
-cols = st.columns([1, 3])  # 1/3 and 3/4 columns
+st.subheader("1/3 and 2/3 columns with only the first used")
+cols = st.columns((1, 2))  # 1/3 and 2/3 columns
 cols[0].subheader("Col1")
 cols[0].write(DUMMY_TEXT)
 
@@ -36,8 +36,24 @@ cols[0].write(DUMMY_TEXT)
 
 cols[1].subheader("Markdown")
 cols[1].markdown("""
-This is a **markdown** text with *italics* and `code` and [link](https://streamlit.io).
+This is a markdown text with **bold**,
+*italics*, `code`, [link](https://streamlit.io).
 """)
+
+st.columns(1)
+
+st.subheader("Code")
+cols = st.columns(3)
+
+s = """# Some comment
+print("Hello, world!")
+"""
+cols[0].write("Plain format")
+cols[0].code(s, language=None)
+cols[1].write("Python highlighting")
+cols[1].code(s, language="python")
+cols[2].write("CSV")
+cols[2].code("Column 1,Column 2\n12.3,23.4", language="csv")
 
 
 st.subheader("LaTeX")
