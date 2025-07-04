@@ -3,7 +3,8 @@
 import re
 from io import StringIO
 
-import chardet  # pip install chardet
+import chardet
+import pandas as pd
 import streamlit as st
 
 from helper import filename_to_title, get_logger_from_filename
@@ -20,17 +21,38 @@ def guess_encoding(raw_data: bytes) -> str:  # noqa: D103
     return "utf-8"  # as fallback
 
 
-st.header("Upload a text file (and guess encoding)")
+st.header("Upload text file (and guess encoding)")
 
 st.write("set `maxUploadSize` in config.toml")
 
-uploaded_file = st.file_uploader("Upload file", type="txt")
+uploaded_txt = st.file_uploader("Upload file", type="txt")
 
-if uploaded_file:
-    raw_data = uploaded_file.getvalue()
+if uploaded_txt:
+    raw_data = uploaded_txt.getvalue()
     encoding = guess_encoding(raw_data)
     s = StringIO(raw_data.decode(encoding)).read()
     # some cleanup
     s = s.replace("\r", "")
     s = re.sub(r"[\n\s]+$", "", s)
-    st.write(s.split("\n"))
+    # st.write(s.split("\n"))
+    st.code(s, language=None)
+
+
+st.header("Upload Excel file")
+st.write("this requires `pip install openpyxl`")
+uploaded_xlsx = st.file_uploader("Upload Excel file", type="xlsx")
+
+if uploaded_xlsx:
+    df = pd.read_excel(uploaded_xlsx, engine="openpyxl")
+    # , sheet_name=
+    # , usecols=
+    st.dataframe(df, hide_index=True)
+
+st.subheader("Alternative: read Excel from file")
+st.code(
+    """
+p = Path("path/to/local.xlsx")
+df = pd.read_excel(p, engine="openpyxl")
+""",
+    language="python",
+)
