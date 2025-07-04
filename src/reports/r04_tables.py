@@ -1,5 +1,7 @@
 """Tables."""
 
+import datetime as dt
+
 import numpy as np
 import pandas as pd
 import streamlit as st
@@ -20,7 +22,7 @@ df = pd.DataFrame(
     }
 )
 
-st.header("simple tables")
+st.header("Simple Tables")
 st.subheader("st.write")
 st.write(df)
 
@@ -45,3 +47,56 @@ st.dataframe(
     column_order=["url", "date", "value"],
     use_container_width=False,
 )
+
+st.header("From raw data to Top 10")
+
+
+def gen_random_data(rows: int = 100) -> pd.DataFrame:
+    """Generate random data."""
+    rng = np.random.default_rng()
+    dt_offset = dt.datetime(2025, 1, 1, 0, 0, 0, tzinfo=None)  # noqa: DTZ001
+    names = ["cat 1", "cat 2", "cat 3"]
+    data = [
+        {
+            "datetime": dt_offset
+            + dt.timedelta(seconds=int(rng.integers(0, 86400) * 31)),
+            "category": rng.choice(names),
+            "value": int(rng.integers(0, 100)),
+        }
+        for _ in range(rows)
+    ]
+    df = pd.DataFrame(data).sort_values("datetime").reset_index(drop=True)
+    return df
+
+
+def enrich_data(df: pd.DataFrame) -> pd.DataFrame:
+    """Enrich the dataframe by extracting data of datetime column."""
+    df["year"] = df["datetime"].dt.year
+    df["month"] = df["datetime"].dt.month
+    df["day"] = df["datetime"].dt.day
+    df["hour"] = df["datetime"].dt.hour
+    df["value_rounded"] = df["value"].round(-1)
+    return df
+
+
+df = gen_random_data()
+st.subheader("Raw data")
+st.dataframe(df, hide_index=True)
+
+df = enrich_data(df)
+
+st.subheader("Top10")
+rel_cols = st.multiselect(
+    label="column",
+    options=["category", "day", "hour", "value_rounded"],
+    default=["category", "hour", "value_rounded"],
+)
+
+if rel_cols:
+    cols = st.columns(len(rel_cols))
+    for i, col in enumerate(rel_cols):
+        cols[i].write(col.title().replace("_", " "))
+        df2 = df.groupby(col).size().to_frame("count")
+        cols[i].dataframe(
+            df2.head(10).sort_values(["count", col], ascending=[False, True])
+        )
