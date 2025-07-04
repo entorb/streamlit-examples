@@ -29,6 +29,7 @@ sqlio
 Streamlit
 tomli
 Torben
+usecols
 usermeta
 varepsilon
 venv
