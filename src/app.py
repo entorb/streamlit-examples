@@ -1,7 +1,7 @@
 """
-Main file for files in reports dir.
+Main file.
 
-Should handle general setup and navigation.
+Creates navigation for file in reports dir.
 """
 
 import tracemalloc
@@ -12,37 +12,27 @@ import streamlit as st
 from helper import create_navigation_menu, get_logger_from_filename
 
 MEASURE_MEMORY = True
-
-# must be first Streamlit command
-st.set_page_config(page_title="AppTitle", page_icon=None, layout="wide")
 logger = get_logger_from_filename(__file__)
-logger.info("Start")
-
-# start measurement of memory usage and runtime
-time_start = time()
-if MEASURE_MEMORY:
-    tracemalloc.start()
 
 
 def main() -> None:  # noqa: D103
+    # must be first Streamlit command
+    st.set_page_config(
+        page_title="Torben's Streamlit Examples", page_icon=None, layout="wide"
+    )
+
+    if MEASURE_MEMORY:
+        tracemalloc.start()
+    time_start = time()
     pagename = create_navigation_menu()
-    logger.info(f"End: {pagename}")  # noqa: G004
-
-
-# print memory usage and runtime
-if MEASURE_MEMORY:
     time_end = time()
-    max_bytes = tracemalloc.get_traced_memory()[0]
-    print(f"{round(max_bytes / 1_048_576, 1)}MB, {round(time_end - time_start, 1)}s")
+    log_line = f"stats: {pagename},{round(time_end - time_start, 1)}s"
 
-    snapshot = tracemalloc.take_snapshot()
-    top_stats = snapshot.statistics("lineno")
-
-    print("[ Top 10 ]")
-    for stat in top_stats[:10]:
-        print(stat)
-
-    tracemalloc.stop()
+    if MEASURE_MEMORY:
+        max_bytes = tracemalloc.get_traced_memory()[0]
+        tracemalloc.stop()
+        log_line += f",{round(max_bytes / 1_048_576, 1)}MB"
+    logger.info(log_line)
 
 
 if __name__ == "__main__":
