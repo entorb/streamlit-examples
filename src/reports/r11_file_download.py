@@ -8,8 +8,6 @@ import streamlit as st
 
 from helper import filename_to_title, get_logger_from_filename
 
-# pip install xlsxwriter
-
 logger = get_logger_from_filename(__file__)
 
 st.title(filename_to_title(__file__))
@@ -19,7 +17,9 @@ st.header("Download a text file")
 st.write("Prepare step makes sense if calculations are needed.")
 cols = st.columns((1, 1, 6))
 if cols[0].button(label="File Prepare"):
-    cont = """This is the content of the text file."""
+    cont = """This is the content
+of the text file."""
+    st.code(cont, language=None)
     buffer = io.BytesIO()
     buffer.write(cont.encode("utf-8"))
     buffer.seek(0)
@@ -44,6 +44,7 @@ df = pd.DataFrame(
 )
 cols = st.columns((1, 1, 6))
 if cols[0].button(label="Excel Prepare"):
+    st.dataframe(df, hide_index=True)
     buffer = io.BytesIO()
     with pd.ExcelWriter(buffer, engine="xlsxwriter") as writer:
         df.to_excel(writer, sheet_name="Sheet1", index=False)
