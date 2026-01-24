@@ -32,7 +32,7 @@ chart = (
         y=alt.Y("y_col", title=None),
     )
 )
-st.altair_chart(chart, use_container_width=True)
+st.altair_chart(chart, width="stretch")
 
 
 st.subheader("x-y line line plot for data in wide table format")
@@ -56,7 +56,7 @@ chart = (
         ),
     )
 )
-st.altair_chart(chart, use_container_width=True)
+st.altair_chart(chart, width="stretch")
 
 st.subheader("Lines and Points, with mean and linear regression")
 base = (
@@ -78,7 +78,7 @@ reg_line = base.transform_regression("x_col", "y_col").mark_line(
     color="gray", strokeDash=[4, 4], strokeWidth=1
 )
 chart = base + base.mark_line() + mean_line + reg_line
-st.altair_chart(chart, use_container_width=True)  # type: ignore
+st.altair_chart(chart, width="stretch")  # type: ignore
 
 
 st.header("Bar Charts")
@@ -140,7 +140,7 @@ chart = (
         ],
     )
 )
-st.altair_chart(chart, use_container_width=True)
+st.altair_chart(chart, width="stretch")
 
 st.subheader("BarChart for data in wide table format")
 # custom color scale
@@ -172,7 +172,7 @@ chart = (
         xOffset="cols:N",
     )
 )
-st.altair_chart(chart, use_container_width=True)
+st.altair_chart(chart, width="stretch")
 
 # :T stands for Temporal. It indicates that the field contains date or time values.
 # :N stands for Nominal. It indicates that the field contains categorical data,
