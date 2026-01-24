@@ -1,6 +1,5 @@
 """Helper functions for app.py."""
 
-from logging import Logger
 from pathlib import Path
 from typing import TYPE_CHECKING
 
@@ -8,6 +7,8 @@ import streamlit as st
 from streamlit.logger import get_logger
 
 if TYPE_CHECKING:
+    from logging import Logger
+
     from streamlit.navigation.page import StreamlitPage
 
 
