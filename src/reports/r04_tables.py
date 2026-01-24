@@ -45,7 +45,7 @@ st.dataframe(
         ),
     },
     column_order=["url", "date", "value"],
-    use_container_width=False,
+    width="content",
 )
 
 st.header("From raw data to Top 10")
