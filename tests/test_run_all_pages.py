@@ -1,7 +1,5 @@
 """Test: Open all Pages/Reports."""
 
-# ruff: noqa: D103, INP001
-
 import sys
 import warnings
 from pathlib import Path
