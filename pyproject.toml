@@ -8,7 +8,7 @@ dependencies = [
     "chardet>=5.2.0",
     "msal>=1.34.0",
     "pandas>=2.3.3",
-    "streamlit>=1.53.1",
+    "streamlit>=1.54.0",
     "xlsxwriter>=3.2.9",
 ]
 
@@ -20,7 +20,7 @@ dev = [
     "pre-commit>=4.5.1",
     "pytest>=9.0.2",
     "pytest-cov>=7.0.0",
-    "ruff>=0.14.14",
+    "ruff>=0.15.0",
     "tomli-w>=1.2.0",
     "watchdog>=6.0.0",
 ]
