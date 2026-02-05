@@ -24,7 +24,7 @@ def get_d3_locale(lang: str) -> tuple[dict, dict]:
 
     Used for localization of altair charts.
     """
-    locale = "de-DE" if lang in ("de",) else "en-US"
+    locale = "de-DE" if lang == "de" else "en-US"
     with Path(f"src/resources/d3-format-{locale}.json").open() as f:
         d3_format = json.load(f)
     with Path(f"src/resources/d3-time-format-{locale}.json").open() as f:
