@@ -28,6 +28,7 @@ SonarCloud
 SonarQube
 sqlio
 Streamlit
+testpaths
 tomli
 Torben
 usecols
