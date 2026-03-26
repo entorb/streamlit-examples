@@ -5,7 +5,7 @@ description = "Torben's Streamlit Examples and Snippets"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-    "chardet>=7.1.0",
+    "chardet>=7.3.0",
     "msal>=1.35.1",
     "pandas>=2.3.3",
     "streamlit>=1.55.0",
@@ -16,8 +16,8 @@ dependencies = [
 dev = [
     "pre-commit>=4.5.1",
     "pytest>=9.0.2",
-    "pytest-cov>=7.0.0",
-    "ruff>=0.15.6",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.15.7",
     "tomli-w>=1.2.0",
     "watchdog>=6.0.0",
 ]
