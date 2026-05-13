@@ -7,8 +7,8 @@ requires-python = ">=3.14"
 dependencies = [
     "chardet>=7.4.3",
     "msal>=1.36.0",
-    "pandas>=3.0.2",
-    "streamlit>=1.56.0",
+    "pandas>=3.0.3",
+    "streamlit>=1.57.0",
     "xlsxwriter>=3.2.9",
 ]
 
