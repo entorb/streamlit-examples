@@ -17,6 +17,7 @@ MSAL
 nabla
 noqa
 Offen
+prek
 psycopg
 putconn
 pytest
