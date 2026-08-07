@@ -7,13 +7,13 @@ cd $(dirname $0)/..
 set -e
 
 uv remove chardet msal pandas streamlit xlsxwriter
-uv remove --dev ruff pre-commit pytest pytest-cov tomli-w watchdog
+uv remove --dev ruff pytest pytest-cov tomli-w watchdog
 
 uv lock --upgrade
 uv sync --upgrade
 
 uv add chardet msal pandas streamlit xlsxwriter
-uv add --dev ruff pre-commit pytest pytest-cov tomli-w watchdog
+uv add --dev ruff pytest pytest-cov tomli-w watchdog
 
 uv lock --upgrade
 uv sync --upgrade
@@ -23,7 +23,7 @@ uv run ruff format
 uv run ruff check --fix
 
 # pre-commit
-uv run pre-commit autoupdate
-uv run pre-commit run --all-files
+prek autoupdate
+prek run --all-files
 
 echo DONE
