@@ -1,0 +1,32 @@
+[project]
+name = "streamlit-examples"
+version = "0.1.0"
+description = "Torben's Streamlit Examples and Snippets"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "chardet>=7.5.1",
+    "msal>=1.37.0",
+    "pandas>=3.0.5",
+    "streamlit>=1.61.1",
+    "xlsxwriter>=3.2.9",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.16.2",
+    "tomli-w>=1.2.0",
+    "watchdog>=6.0.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["src"]
+
+[tool.coverage.report]
+exclude_lines = ["pragma: no cover", "if __name__ == \"__main__\":"]
