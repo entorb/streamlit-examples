@@ -25,6 +25,7 @@ pyupgrade
 rumdl
 scriptrunner
 selectbox
+shfmt
 SonarCloud
 SonarQube
 sqlio
