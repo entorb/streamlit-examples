@@ -12,10 +12,10 @@ dictionaries:
   - python
 language: en-US
 ignorePaths:
-  - '/.vscode/'
-  - 'cspell-words.txt'
-  - 'cspell.config.yaml'
-  - '/LICENSE'
   - '.*'
-  - 'src/resources'
-  - 'uv.lock'
+  - /.vscode/
+  - /LICENSE
+  - cspell-words.txt
+  - cspell.config.yaml
+  - src/resources
+  - uv.lock
