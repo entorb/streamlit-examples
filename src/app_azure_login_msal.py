@@ -134,7 +134,7 @@ def get_username_from_azure(app: ConfidentialClientApplication, code: str) -> st
     st.write("token_result", token_result)
 
     # cspell: disable-next-line
-    # {"token_type":"Bearer","scope":"User.Read profile openid email","expires_in":3948,"ext_expires_in":3948,"access_token":"XXX","refresh_token":"XXX","id_token":"XXX","client_info":"XXX","id_token_claims":{"aud":"XXX","iss":"https://login.microsoftonline.com/XXX/v2.0","iat":000,"nbf":000,"exp":000,"name":"name","oid":"XXX","preferred_username":"XXX","rh":"XXX","roles":["XXX"],"sub":"XXX","tid":"XXX","uti":"XXX","ver":"2.0"},"token_source":"identity_provider"}  # noqa: E501
+    # {"token_type":"Bearer","scope":"User.Read profile openid email","expires_in":3948,"ext_expires_in":3948,"access_token":"XXX","refresh_token":"XXX","id_token":"XXX","client_info":"XXX","id_token_claims":{"aud":"XXX","iss":"https://login.microsoftonline.com/XXX/v2.0","iat":000,"nbf":000,"exp":000,"name":"name","oid":"XXX","preferred_username":"XXX","rh":"XXX","roles":["XXX"],"sub":"XXX","tid":"XXX","uti":"XXX","ver":"2.0"},"token_source":"identity_provider"}
 
     username = token_result.get("id_token_claims", {}).get("preferred_username", "")
     # user@myDomain.com

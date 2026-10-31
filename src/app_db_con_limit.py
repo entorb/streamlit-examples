@@ -75,7 +75,7 @@ def _db_query(  # noqa: C901, PLR0915
             # suppress: UserWarning: pandas only support SQLAlchemy
             warnings.simplefilter(action="ignore", category=UserWarning)
             res = pd.read_sql_query(sql=sql, con=con, params=params)
-            # df = sqlio.read_sql_query(sql=sql, con=.get_connection(), params=params)  # noqa: E501
+            # df = sqlio.read_sql_query(sql=sql, con=.get_connection(), params=params)
             warnings.simplefilter("always")  # Reset warnings
             assert isinstance(res, pd.DataFrame), type(res)
 
