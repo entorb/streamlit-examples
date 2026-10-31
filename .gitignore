@@ -1,0 +1,13 @@
+.coverage
+.DS_Store
+.sonarlint/
+.vscode/
+/.pytest_cache/
+/.ruff_cache/
+/.rumdl_cache/
+/.venv/
+__pycache__/
+cspell-words-missing.txt
+mem_logger.tsv
+requirements-all.txt
+secrets.toml
